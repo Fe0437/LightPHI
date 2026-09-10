@@ -1,0 +1,74 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "release",
+      "displayName": "Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "LIGHTPHI_BUILD_TESTS": "OFF",
+        "LIGHTPHI_BUILD_EXAMPLES": "OFF"
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "inherits": "release",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "LIGHTPHI_BUILD_TESTS": "ON",
+        "LIGHTPHI_BUILD_EXAMPLES": "ON"
+      }
+    },
+    {
+      "name": "dev-asan",
+      "displayName": "Development (ASan + UBSan)",
+      "inherits": "debug",
+      "binaryDir": "${sourceDir}/build/asan",
+      "cacheVariables": {
+        "LIGHTPHI_ENABLE_ASAN": "ON",
+        "LIGHTPHI_ENABLE_UBSAN": "ON"
+      }
+    },
+    {
+      "name": "dev-ubsan",
+      "displayName": "Development (UBSan)",
+      "inherits": "debug",
+      "binaryDir": "${sourceDir}/build/ubsan",
+      "cacheVariables": {
+        "LIGHTPHI_ENABLE_UBSAN": "ON"
+      }
+    },
+    {
+      "name": "dev-tsan",
+      "displayName": "Development (ThreadSanitizer)",
+      "inherits": "debug",
+      "binaryDir": "${sourceDir}/build/tsan",
+      "cacheVariables": {
+        "LIGHTPHI_ENABLE_TSAN": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "release", "configurePreset": "release" },
+    { "name": "debug", "configurePreset": "debug" },
+    { "name": "dev-asan", "configurePreset": "dev-asan" },
+    { "name": "dev-ubsan", "configurePreset": "dev-ubsan" },
+    { "name": "dev-tsan", "configurePreset": "dev-tsan" }
+  ],
+  "testPresets": [
+    { "name": "debug", "configurePreset": "debug", "output": { "outputOnFailure": true } },
+    { "name": "dev-asan", "configurePreset": "dev-asan", "output": { "outputOnFailure": true } },
+    { "name": "dev-ubsan", "configurePreset": "dev-ubsan", "output": { "outputOnFailure": true } },
+    { "name": "dev-tsan", "configurePreset": "dev-tsan", "output": { "outputOnFailure": true } }
+  ]
+}

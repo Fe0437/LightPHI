@@ -1,0 +1,26 @@
+{
+  "sources": [
+    [
+      "source",
+      "*.cppm"
+    ]
+  ],
+  "package_titles": {
+    "input": "Input contract",
+    "backend": "Backends"
+  },
+  "repository_url": "https://github.com/Fe0437/LightPHI/blob/main",
+  "intro": [
+    "Unfamiliar with a term? The {doc}`../GLOSSARY` fixes the meaning of *contact*,",
+    "*batch*, *sample* and *capability*, which the declarations below use throughout.",
+    "",
+    "Each page covers one package. It first lists its public types, then documents each",
+    "declaration.",
+    "",
+    "This reference is generated from the comments beside the C++ declarations. Only the",
+    "exported modules under `source/` appear here; a backend's private headers do not."
+  ],
+  "package_note": [
+    "Unfamiliar with a term? See the {doc}`../GLOSSARY`."
+  ]
+}
