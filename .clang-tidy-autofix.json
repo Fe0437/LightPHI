@@ -1,0 +1,7 @@
+{
+  "clang_tidy_never_autofix_paths": [],
+  "clang_tidy_never_autofix_checks_add": [],
+  "clang_tidy_never_autofix_checks_remove": [],
+  "whole_batch_only_checks_add": [],
+  "whole_batch_only_checks_remove": []
+}

@@ -1,0 +1,164 @@
+{
+  "source": "synthesized",
+  "description": "Hand-written events covering every translation rule. A device recording from the manual pen check uses the same format.",
+  "entries": [
+    {
+      "event": {
+        "type": "tabletProximity",
+        "pointerType": "pen",
+        "capabilityMask": 1408
+      },
+      "capabilities": 49
+    },
+    {
+      "event": {
+        "type": "leftMouseDown",
+        "subtype": "tabletPoint",
+        "x": 10,
+        "y": 20,
+        "pressure": 0.5,
+        "tiltX": 0.5,
+        "tiltY": -0.5,
+        "rotation": 30,
+        "timestamp": 2.0
+      },
+      "captured": {
+        "kind": "Begin",
+        "x": 10,
+        "y": 20,
+        "timeNanoseconds": 2000000000,
+        "pressure": 0.5,
+        "tiltXRadians": 0.7853981633974483,
+        "tiltYRadians": -0.7853981633974483,
+        "twistRadians": 0.5235987755982988,
+        "eraser": false
+      }
+    },
+    {
+      "event": {
+        "type": "leftMouseDragged",
+        "subtype": "tabletPoint",
+        "x": 12,
+        "y": 22,
+        "pressure": 0.75,
+        "tiltX": 0,
+        "tiltY": 0,
+        "rotation": 0,
+        "timestamp": 2.01
+      },
+      "captured": {
+        "kind": "Update",
+        "x": 12,
+        "y": 22,
+        "timeNanoseconds": 2010000000,
+        "pressure": 0.75,
+        "tiltXRadians": 0,
+        "tiltYRadians": 0,
+        "twistRadians": 0,
+        "eraser": false
+      }
+    },
+    {
+      "event": {
+        "type": "leftMouseUp",
+        "subtype": "tabletPoint",
+        "x": 14,
+        "y": 24,
+        "pressure": 0,
+        "tiltX": 0,
+        "tiltY": 0,
+        "rotation": 0,
+        "timestamp": 2.02
+      },
+      "captured": {
+        "kind": "End",
+        "x": 14,
+        "y": 24,
+        "timeNanoseconds": 2020000000,
+        "pressure": 0,
+        "tiltXRadians": 0,
+        "tiltYRadians": 0,
+        "twistRadians": 0,
+        "eraser": false
+      }
+    },
+    {
+      "event": {
+        "type": "tabletProximity",
+        "pointerType": "eraser",
+        "capabilityMask": 9216
+      },
+      "capabilities": 209
+    },
+    {
+      "event": {
+        "type": "leftMouseDown",
+        "subtype": "tabletPoint",
+        "x": 30,
+        "y": 40,
+        "pressure": 0.25,
+        "tiltX": 0,
+        "tiltY": 0,
+        "rotation": 270,
+        "timestamp": 3.0
+      },
+      "captured": {
+        "kind": "Begin",
+        "x": 30,
+        "y": 40,
+        "timeNanoseconds": 3000000000,
+        "pressure": 0.25,
+        "tiltXRadians": 0,
+        "tiltYRadians": 0,
+        "twistRadians": 4.71238898038469,
+        "eraser": true
+      }
+    },
+    {
+      "event": {
+        "type": "tabletProximity",
+        "pointerType": "pen",
+        "capabilityMask": 1024
+      },
+      "capabilities": 17
+    },
+    {
+      "event": {
+        "type": "leftMouseDown",
+        "subtype": "mouseEvent",
+        "x": 5,
+        "y": 6,
+        "pressure": 0,
+        "tiltX": 0,
+        "tiltY": 0,
+        "rotation": 0,
+        "timestamp": 4.0
+      },
+      "captured": {
+        "kind": "Begin",
+        "x": 5,
+        "y": 6,
+        "timeNanoseconds": 4000000000,
+        "pressure": 0,
+        "tiltXRadians": 0,
+        "tiltYRadians": 0,
+        "twistRadians": 0,
+        "eraser": false
+      }
+    },
+    {
+      "event": {
+        "type": "rightMouseDown",
+        "subtype": "mouseEvent",
+        "x": 5,
+        "y": 6,
+        "pressure": 0,
+        "tiltX": 0,
+        "tiltY": 0,
+        "rotation": 0,
+        "timestamp": 4.1
+      },
+      "captured": null
+    }
+  ]
+}

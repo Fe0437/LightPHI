@@ -1,0 +1,16 @@
+/build/
+/out/
+/.cache/
+
+compile_commands.json
+/.guidelines-cache/
+/clang_tidy_report.md
+/clang_tidy_report.xml
+/guidelines_report.md
+/guidelines_report.xml
+*__pycache__*
+
+/.DS_Store
+/.vscode/
+/.private/
+/.claude/

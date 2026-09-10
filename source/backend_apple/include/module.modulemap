@@ -1,0 +1,4 @@
+module LightPHIAppleInterop {
+  header "../apple_event_sink.h"
+  requires cplusplus
+}

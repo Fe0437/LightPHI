@@ -1,0 +1,27 @@
+# Formatting policy applied before every commit. The C/C++ rules live in .clang-format and the
+# static-analysis rules in .clang-tidy; this file only decides when clang-format runs.
+#
+# The Python rules live in ruff.toml and cover the documentation build under tools/docs/.
+repos:
+  - repo: local
+    hooks:
+      - id: clang-format
+        name: clang-format
+        entry: clang-format -i
+        language: system
+        files: \.(c|cc|cpp|cxx|h|hh|hpp|hxx|cppm)$
+      - id: swift-format
+        name: swift-format
+        entry: swift-format format --in-place
+        language: system
+        files: \.swift$
+      - id: ruff-check
+        name: ruff check
+        entry: python3 -m ruff check --fix --force-exclude
+        language: system
+        types_or: [python, pyi]
+      - id: ruff-format
+        name: ruff format
+        entry: python3 -m ruff format --force-exclude
+        language: system
+        types_or: [python, pyi]

@@ -1,0 +1,48 @@
+add_executable(lightphi_api_contract api_contract.cpp)
+target_link_libraries(lightphi_api_contract PRIVATE LightPHI::LightPHI)
+lightphi_configure_target(lightphi_api_contract)
+add_test(NAME lightphi.api_contract COMMAND lightphi_api_contract)
+set_tests_properties(lightphi.api_contract PROPERTIES TIMEOUT 10 LABELS "api;smoke")
+
+add_executable(lightphi_batch_validation_contract batch_validation_contract.cpp)
+target_link_libraries(lightphi_batch_validation_contract PRIVATE LightPHI::LightPHI)
+lightphi_configure_target(lightphi_batch_validation_contract)
+add_test(NAME lightphi.batch_validation_contract COMMAND lightphi_batch_validation_contract)
+set_tests_properties(lightphi.batch_validation_contract PROPERTIES TIMEOUT 10 LABELS "api;contract;smoke")
+
+# The Apple delivery core is framework-free, so its contract runs without an NSApplication.
+if(TARGET LightPHIAppleInput)
+  add_executable(lightphi_apple_delivery_contract apple_delivery_contract.cpp)
+  target_link_libraries(lightphi_apple_delivery_contract PRIVATE LightPHIAppleInput)
+  lightphi_configure_target(lightphi_apple_delivery_contract)
+  add_test(NAME lightphi.apple_delivery_contract COMMAND lightphi_apple_delivery_contract)
+  set_tests_properties(lightphi.apple_delivery_contract PROPERTIES TIMEOUT 10 LABELS "contract;smoke")
+endif()
+
+# Replays recorded and hand-written AppKit events through the Swift translation, without a window.
+if(TARGET LightPHIMacOSCapture)
+  file(GLOB _lightphi_macos_fixtures CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/macos/*.json")
+  add_executable(lightphi_macos_capture_fixtures macos_capture_fixtures.swift support/AppKitEventFixture.swift)
+  target_compile_options(lightphi_macos_capture_fixtures PRIVATE ${LIGHTPHI_SWIFT_INTEROP_OPTIONS})
+  target_link_libraries(lightphi_macos_capture_fixtures PRIVATE LightPHIMacOSCapture Microsoft.GSL::GSL)
+  add_test(NAME lightphi.macos_capture_fixtures COMMAND lightphi_macos_capture_fixtures ${_lightphi_macos_fixtures})
+  set_tests_properties(lightphi.macos_capture_fixtures PROPERTIES TIMEOUT 10 LABELS "contract;smoke")
+endif()
+
+if(TARGET LightPHI::FakeBackend)
+  add_executable(lightphi_fake_contract fake_contract.cpp)
+  target_link_libraries(lightphi_fake_contract PRIVATE LightPHI::FakeBackend)
+  lightphi_configure_target(lightphi_fake_contract)
+  add_test(NAME lightphi.fake_contract COMMAND lightphi_fake_contract)
+  set_tests_properties(lightphi.fake_contract PROPERTIES TIMEOUT 10 LABELS "api;contract;smoke")
+endif()
+
+if(NOT TARGET LightPHI::Backend)
+  message(FATAL_ERROR "LIGHTPHI_BUILD_TESTS requires an automatically selected LightPHI backend")
+endif()
+
+add_executable(lightphi_backend_contract backend_contract.cpp)
+target_link_libraries(lightphi_backend_contract PRIVATE LightPHI::Backend)
+lightphi_configure_target(lightphi_backend_contract)
+add_test(NAME lightphi.backend_contract COMMAND lightphi_backend_contract)
+set_tests_properties(lightphi.backend_contract PROPERTIES TIMEOUT 10 LABELS "api;contract;smoke")

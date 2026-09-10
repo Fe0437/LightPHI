@@ -1,0 +1,46 @@
+BasedOnStyle: LLVM
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 120
+
+BreakBeforeBraces: Allman
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  BeforeElse: true
+
+PointerAlignment: Right
+ReferenceAlignment: Right
+
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceAfterCStyleCast: false
+
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignTrailingComments: true
+
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+
+NamespaceIndentation: All
+IndentCaseLabels: true
+
+RequiresClausePosition: WithPreceding
+BreakBeforeConceptDeclarations: true
+Cpp11BracedListStyle: true
+
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+
+InsertBraces: true
+RemoveBracesLLVM: false
