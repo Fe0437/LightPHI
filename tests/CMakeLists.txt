@@ -1,0 +1,32 @@
+add_executable(lightphi_fake_conformance conformance/source_conformance.cpp)
+target_compile_features(lightphi_fake_conformance PRIVATE cxx_std_23)
+target_link_libraries(lightphi_fake_conformance PRIVATE LightPHI::FakeBackend)
+lightphi_set_warnings(lightphi_fake_conformance)
+lightphi_disable_exceptions(lightphi_fake_conformance)
+set_target_properties(lightphi_fake_conformance PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME lightphi.fake_conformance COMMAND lightphi_fake_conformance)
+set_tests_properties(lightphi.fake_conformance PROPERTIES TIMEOUT 10 LABELS "contract;smoke")
+
+add_executable(lightphi_api_contract api_contract.cpp)
+target_compile_features(lightphi_api_contract PRIVATE cxx_std_23)
+target_link_libraries(lightphi_api_contract PRIVATE LightPHI::FakeBackend)
+lightphi_set_warnings(lightphi_api_contract)
+lightphi_disable_exceptions(lightphi_api_contract)
+set_target_properties(lightphi_api_contract PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME lightphi.api_contract COMMAND lightphi_api_contract)
+set_tests_properties(lightphi.api_contract PROPERTIES TIMEOUT 10 LABELS "api;smoke")
+
+add_executable(lightphi_abi_layout abi_layout.cpp)
+target_compile_features(lightphi_abi_layout PRIVATE cxx_std_23)
+target_link_libraries(lightphi_abi_layout PRIVATE LightPHI::FakeBackend)
+lightphi_set_warnings(lightphi_abi_layout)
+lightphi_disable_exceptions(lightphi_abi_layout)
+set_target_properties(lightphi_abi_layout PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME lightphi.abi_layout COMMAND lightphi_abi_layout)
+set_tests_properties(lightphi.abi_layout PROPERTIES TIMEOUT 10 LABELS "abi;smoke")
+
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+add_test(
+  NAME lightphi.repository_contract
+  COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/tools/check_repository.py ${PROJECT_SOURCE_DIR})
+set_tests_properties(lightphi.repository_contract PROPERTIES TIMEOUT 10 LABELS "repository;smoke")

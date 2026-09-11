@@ -1,0 +1,18 @@
+{
+  "contract": "C++23 named modules compiled with the consumer",
+  "cross_toolchain_abi": false,
+  "pointer_bits": 64,
+  "modules": [
+    "lightphi.input",
+    "lightphi.backend.fake"
+  ],
+  "layouts": {
+    "ContactId": 8,
+    "FakeInputSource": 16,
+    "FakeInputSourceDescriptor": 20,
+    "InputBatch": 40,
+    "InputSample": 88,
+    "InputSourceCapabilities": 16,
+    "SampleId": 8
+  }
+}

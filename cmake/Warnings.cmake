@@ -1,0 +1,16 @@
+# Warning and language-runtime policy for LightPHI-owned C++ targets.
+function(lightphi_set_warnings target)
+  if(MSVC)
+    target_compile_options(${target} PRIVATE /W4 /permissive-)
+  else()
+    target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic)
+  endif()
+endfunction()
+
+function(lightphi_disable_exceptions target)
+  if(MSVC)
+    target_compile_options(${target} PUBLIC /EHs-c-)
+  else()
+    target_compile_options(${target} PUBLIC -fno-exceptions -fno-rtti)
+  endif()
+endfunction()
